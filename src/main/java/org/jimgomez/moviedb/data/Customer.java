@@ -38,6 +38,10 @@ public class Customer {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -100,9 +104,5 @@ public class Customer {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }
