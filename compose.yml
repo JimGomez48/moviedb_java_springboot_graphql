@@ -1,0 +1,26 @@
+networks:
+  graphql-net:
+    driver: bridge
+
+x-jdk-maven-common: &jdk_maven_common
+  image: graphql-spring-boot
+  working_dir: /usr/src/app
+
+services:
+  server:
+    <<: *jdk_maven_common
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    hostname: graphql
+    ports:
+      - "8080:8080"
+    networks:
+      - graphql-net
+    command: "./mvnw spring-boot:run"
+  unit_tests:
+    <<: *jdk_maven_common
+    networks:
+      - graphql-net
+    entrypoint: "./mvnw test"
