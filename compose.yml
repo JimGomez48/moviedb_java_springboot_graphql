@@ -5,6 +5,8 @@ networks:
 x-jdk-maven-common: &jdk_maven_common
   image: graphql-spring-boot
   working_dir: /usr/src/app
+  volumes:
+    - ./:/usr/src/app
 
 services:
   server:
